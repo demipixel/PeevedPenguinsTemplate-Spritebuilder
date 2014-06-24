@@ -221,8 +221,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>15</real>
-							<real>15</real>
+							<real>-5</real>
+							<real>10</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -235,7 +235,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.0</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -287,8 +287,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
