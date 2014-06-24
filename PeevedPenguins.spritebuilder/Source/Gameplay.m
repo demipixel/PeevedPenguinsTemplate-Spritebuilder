@@ -26,7 +26,7 @@ CCNode *_catapultArm;
     penguin.position = ccpAdd(_catapultArm.position, ccp(16, 50));
     [_physicsNode addChild:penguin];
     
-    CGPoint launchDirection = ccp(1, 0);
+    CGPoint launchDirection = ccp(0, 0);
     CGPoint force = ccpMult(launchDirection, 8000);
     [penguin.physicsBody applyForce:force];
 }
