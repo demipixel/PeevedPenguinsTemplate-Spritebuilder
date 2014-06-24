@@ -18,7 +18,6 @@
     self.userInteractionEnabled = TRUE;
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
     [_levelNode addChild:level];
-    if (!level) NSLog(@"Does not exist");
 }
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

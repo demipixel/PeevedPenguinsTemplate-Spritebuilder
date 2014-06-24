@@ -539,7 +539,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCNode</string>
+						<string>Level Adding</string>
 						<key>memberVarAssignmentName</key>
 						<string>_levelNode</string>
 						<key>memberVarAssignmentType</key>
