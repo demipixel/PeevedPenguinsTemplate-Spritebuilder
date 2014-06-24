@@ -40,7 +40,7 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>Seal</string>
+		<string></string>
 		<key>displayName</key>
 		<string>CCSprite</string>
 		<key>memberVarAssignmentName</key>
@@ -54,7 +54,7 @@
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>collisionCategories</key>
 			<array/>
 			<key>collisionMask</key>
@@ -62,7 +62,7 @@
 			<key>collisionType</key>
 			<string></string>
 			<key>cornerRadius</key>
-			<real>13.658166885375977</real>
+			<real>0.0</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
@@ -74,12 +74,43 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>13.5</real>
-					<real>12.5</real>
+					<real>0.21685893833637238</real>
+					<real>-0.040638774633407593</real>
+				</array>
+				<array>
+					<real>14.299853324890137</real>
+					<real>26.783622741699219</real>
+				</array>
+				<array>
+					<real>99.445571899414062</real>
+					<real>26.382646560668945</real>
+				</array>
+				<array>
+					<real>113.2098388671875</real>
+					<real>-0.24112674593925476</real>
 				</array>
 			</array>
 			<key>polygons</key>
-			<array/>
+			<array>
+				<array>
+					<array>
+						<real>113.2098388671875</real>
+						<real>-0.24112674593925476</real>
+					</array>
+					<array>
+						<real>99.445571899414062</real>
+						<real>26.382646560668945</real>
+					</array>
+					<array>
+						<real>14.299853324890137</real>
+						<real>26.783622741699219</real>
+					</array>
+					<array>
+						<real>0.21685893833637238</real>
+						<real>-0.040638774633407593</real>
+					</array>
+				</array>
+			</array>
 		</dict>
 		<key>properties</key>
 		<array>
@@ -137,7 +168,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>PeevedPenguinsAssets/seal.png</string>
+					<string>PeevedPenguinsAssets/taperedblock.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -154,6 +185,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
