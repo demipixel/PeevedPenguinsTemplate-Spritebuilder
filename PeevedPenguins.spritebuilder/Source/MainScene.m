@@ -10,4 +10,8 @@
 
 @implementation MainScene
 
+- (void)play {
+    NSLog(@"Play button hit!");
+}
+
 @end

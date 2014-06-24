@@ -10,14 +10,5 @@
 
 @implementation Seal
 
-- (id)init {
-    self = [super init];
-    
-    if (self) {
-        NSLog(@"Seal Created!");
-    }
-    
-    return self;
-}
 
 @end
