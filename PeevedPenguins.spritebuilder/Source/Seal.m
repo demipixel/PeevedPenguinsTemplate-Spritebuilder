@@ -10,5 +10,6 @@
 
 @implementation Seal
 
+NSLog(@"SPAWNED");
 
 @end
