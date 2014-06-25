@@ -7,6 +7,7 @@
 //
 
 #import "Gameplay.h"
+#import "Penguin.h";
 #import "CCPhysics+ObjectiveChipmunk.h"
 
 static const float MIN_SPEED = 5.f;
@@ -19,7 +20,7 @@ static const float MIN_SPEED = 5.f;
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    CCNode *_currentPenguin;
+    Penguin *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
     
     CCAction *_followPenguin;
@@ -36,7 +37,7 @@ static const float MIN_SPEED = 5.f;
 }
 
 - (void)update:(CCTime)delta {
-    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) {
+    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED && _currentPenguin.launched) {
         [self nextAttempt];
         return;
     }
@@ -63,7 +64,7 @@ static const float MIN_SPEED = 5.f;
         
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
         
-        _currentPenguin = [CCBReader load:@"Penguin"];
+        _currentPenguin = (Penguin*)[CCBReader load:@"Penguin"];
         CGPoint penguinPosition = [_catapultArm convertToWorldSpace:ccp(34, 138)];
         _currentPenguin.position = [_physicsNode convertToNodeSpace:penguinPosition];
         [_physicsNode addChild:_currentPenguin];
@@ -106,6 +107,8 @@ static const float MIN_SPEED = 5.f;
     
     _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
     [_scroller runAction:_followPenguin];
+    
+    _currentPenguin.launched = TRUE;
 }
 
 - (void)nextAttempt {
