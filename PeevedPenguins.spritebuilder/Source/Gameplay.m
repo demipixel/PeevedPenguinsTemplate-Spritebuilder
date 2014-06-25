@@ -36,8 +36,8 @@
     
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
     {
-        offsetTouchX = _mouseJointNode.position.x - touchLocation.x;
-        offsetTouchY = _mouseJointNode.position.y - touchLocation.y;
+        offsetTouchX = touchLocation.x - _mouseJointNode.position.x;
+        offsetTouchY = touchLocation.y - _mouseJointNode.position.y;
         
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
     }
