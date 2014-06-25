@@ -116,6 +116,7 @@
 
 - (void)sealRemoved:(CCNode *)seal {
     CCParticleSystem *explosion = (CCParticleSystem *)[CCBReader load:@"SealExplosion"];
+    explosion.duration = 1;
     explosion.autoRemoveOnFinish = TRUE;
     explosion.position = seal.position;
     [seal.parent addChild:explosion];
