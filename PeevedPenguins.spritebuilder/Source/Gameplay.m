@@ -46,7 +46,7 @@
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint touchLocation = [touch locationInNode:_scroller];
-    _mouseJointNode.position = ccp(touchLocation.x+offsetTouchX/2,touchLocation.y+offsetTouchY/2);
+    _mouseJointNode.position = ccp(touchLocation.x-offsetTouchX,touchLocation.y-offsetTouchY);
 }
 
 -(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
