@@ -9,6 +9,8 @@
 #import "Gameplay.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
 
+static const float MIN_SPEED = 5.f;
+
 @implementation Gameplay {
     CCPhysicsNode *_physicsNode;
     CCNode *_catapultArm;
@@ -19,6 +21,9 @@
     CCPhysicsJoint *_mouseJoint;
     CCNode *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
+    
+    CCAction *_followPenguin;
+    
 }
 
 - (void)didLoadFromCCB {
@@ -28,6 +33,24 @@
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
     _physicsNode.collisionDelegate = self;
+}
+
+- (void)update:(CCTime)delta {
+    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED) {
+        [self nextAttempt];
+        return;
+    }
+    
+    int xMin = _currentPenguin.boundingBox.origin.x;
+    if (xMin < self.boundingBox.origin.x) {
+        [self nextAttempt];
+        return;
+    }
+    int xMax = xMin + _currentPenguin.boundingBox.size.width;
+    if (xMax > (self.boundingBox.origin.x + self.boundingBox.size.width)) {
+        [self nextAttempt];
+        return;
+    }
 }
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -81,8 +104,16 @@
     
     _currentPenguin.physicsBody.allowsRotation = TRUE;
     
-    CCActionFollow *follow = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
-    [_scroller runAction:follow];
+    _followPenguin = [CCActionFollow actionWithTarget:_currentPenguin worldBoundary:self.boundingBox];
+    [_scroller runAction:_followPenguin];
+}
+
+- (void)nextAttempt {
+    _currentPenguin = nil;
+    [_scroller stopAction:_followPenguin];
+    
+    CCActionMoveTo *actionMoveTo = [CCActionMoveTo actionWithDuration:1.f position:ccp(0,0)];
+    [_scroller runAction:actionMoveTo];
 }
 
 - (void)launchPenguin {
