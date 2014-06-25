@@ -14,6 +14,8 @@
     CCNode *_levelNode;
     CCNode *_scroller;
     CCNode *_pullbackNode;
+    CCNode *_mouseJointNode;
+    CCPhysicsJoint *_mouseJoint;
 }
 
 - (void)didLoadFromCCB {
@@ -22,10 +24,36 @@
     [_levelNode addChild:level];
     _physicsNode.debugDraw = TRUE;
     _pullbackNode.physicsBody.collisionMask = @[];
+    _mouseJointNode.physicsBody.collisionMask = @[];
 }
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self launchPenguin];
+    CGPoint touchLocation = [touch locationInNode:_scroller];
+    
+    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) {
+        _mouseJointNode.position = touchLocation;
+        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode bodyB:_catapultArm anchorA:ccp(0,0) anchorB:ccp(34,138) restLength:0.f stiffness:3000.f damping:150.f];
+    }
+}
+
+- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint touchLocation = [touch locationInNode:_scroller];
+    _mouseJointNode.position = touchLocation;
+}
+
+- (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    [self releaseCatapult];
+}
+
+- (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+    [self releaseCatapult];
+}
+
+- (void)releaseCatapult {
+    if (_mouseJoint != nil) {
+        [_mouseJoint invalidate];
+        _mouseJoint = nil;
+    }
 }
 
 - (void)launchPenguin {
