@@ -13,7 +13,7 @@
     CCNode *_catapultArm;
     CCNode *_levelNode;
     CCNode *_scroller;
-    CCNode *_pullbackNode
+    CCNode *_pullbackNode;
 }
 
 - (void)didLoadFromCCB {
