@@ -27,11 +27,14 @@
     _mouseJointNode.physicsBody.collisionMask = @[];
 }
 
-- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
     CGPoint touchLocation = [touch locationInNode:_scroller];
     
-    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)) {
+    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
+    {
         _mouseJointNode.position = touchLocation;
+        
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
     }
 }
@@ -41,16 +44,19 @@
     _mouseJointNode.position = touchLocation;
 }
 
-- (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
     [self releaseCatapult];
 }
 
-- (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+-(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
     [self releaseCatapult];
 }
 
 - (void)releaseCatapult {
-    if (_mouseJoint != nil) {
+    if (_mouseJoint != nil)
+    {
         [_mouseJoint invalidate];
         _mouseJoint = nil;
     }
