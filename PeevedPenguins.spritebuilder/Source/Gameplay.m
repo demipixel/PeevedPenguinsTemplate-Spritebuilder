@@ -16,9 +16,6 @@
     CCNode *_pullbackNode;
     CCNode *_mouseJointNode;
     CCPhysicsJoint *_mouseJoint;
-    
-    int offsetTouchX;
-    int offsetTouchY;
 }
 
 - (void)didLoadFromCCB {
@@ -36,8 +33,6 @@
     
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation))
     {
-        offsetTouchX = touchLocation.x - _catapultArm.position.x;
-        offsetTouchY = touchLocation.y - _catapultArm.position.y;
         [self setMousePositionX:touchLocation.x Y:touchLocation.y];
         
         _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
@@ -50,7 +45,7 @@
 }
 
 - (void)setMousePositionX:(float)x Y:(float)y {
-    _mouseJointNode.position = ccp(x+offsetTouchX/3,y+offsetTouchY/3);
+    _mouseJointNode.position = ccp(x,y);
 }
 
 -(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
