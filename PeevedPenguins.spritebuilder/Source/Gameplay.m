@@ -50,7 +50,7 @@
 }
 
 - (void)setMousePositionX:(float)x Y:(float)y {
-    _mouseJointNode.position = ccp(x+offsetTouchX/2,y+offsetTouchY/2);
+    _mouseJointNode.position = ccp(x+offsetTouchX/3,y+offsetTouchY/3);
 }
 
 -(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
