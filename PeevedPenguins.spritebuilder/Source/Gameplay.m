@@ -119,6 +119,7 @@
     explosion.autoRemoveOnFinish = TRUE;
     explosion.position = seal.position;
     [seal.parent addChild:explosion];
+    
     [seal removeFromParent];
 }
 
