@@ -13,12 +13,14 @@
     CCNode *_catapultArm;
     CCNode *_levelNode;
     CCNode *_scroller;
+    CCNode *_pullbackNode
 }
 
 - (void)didLoadFromCCB {
     self.userInteractionEnabled = TRUE;
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
     [_levelNode addChild:level];
+    _pullbackNode.physicsBody.collisionMask = @[];
 }
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
